@@ -8,3 +8,39 @@ Dans une page afficher les températures pour la journée actuelle pour les endr
 Utiliser l 'API : www.openweathermap.org
 
 /!\ Obligatoire : nodeJS pour récupérer les informations et les transmetre à votre page.
+
+
+
+# Exemple pour passer une reponse de requette via une route
+
+    var http    = require('http');
+    var request  require('request');
+
+    function getResultat(callback){
+        //changer url par l'url de la ressource a recuperer.
+        var url = "http://";
+        
+        //appel de la fonction request
+        request(url, function(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                result = JSON.stringify(JSON.parse(body));
+                return callback(null, result);
+            } else {
+                return callback(error, null);
+            }
+        });
+    }
+
+    app.get('/appel', function(req, res) {
+    
+        getResultat(function(err, data){
+            if(!err){
+                    res.send(data);
+            }
+            else{
+                  res.send(err);
+            }
+
+        });
+
+    });
