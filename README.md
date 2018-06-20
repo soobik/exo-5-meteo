@@ -13,6 +13,7 @@ Utiliser l 'API : www.openweathermap.org
 
 # Exemple pour passer une reponse de requette via une route
 
+```javascript
     var http    = require('http');
     var request  require('request');
 
@@ -44,3 +45,4 @@ Utiliser l 'API : www.openweathermap.org
         });
 
     });
+```
